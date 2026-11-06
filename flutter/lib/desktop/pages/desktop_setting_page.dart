@@ -593,14 +593,14 @@ class _GeneralState extends State<_General> {
             ),
           ),
       ],
-      if (!isWeb && !bind.isCustomClient())
+      if (!isWeb && !bind.isCustomClient() && !kEmiSoftwareUpdateDisabled)
         _OptionCheckBox(
           context,
           'Check for software update on startup',
           kOptionEnableCheckUpdate,
           isServer: false,
         ),
-      if (showAutoUpdate)
+      if (showAutoUpdate && !kEmiSoftwareUpdateDisabled)
         _OptionCheckBox(
           context,
           'Auto update',
@@ -2629,6 +2629,14 @@ class _AboutState extends State<_About> {
                   },
                   child: Text(
                     translate('Website'),
+                    style: linkStyle,
+                  ).marginSymmetric(vertical: 4.0)),
+              InkWell(
+                  onTap: () {
+                    launchUrlString('https://github.com/empresamineira/rustdesk');
+                  },
+                  child: Text(
+                    'Baseado no RustDesk (AGPL-3.0). Código-fonte',
                     style: linkStyle,
                   ).marginSymmetric(vertical: 4.0)),
               Container(

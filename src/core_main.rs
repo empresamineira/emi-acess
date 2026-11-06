@@ -263,7 +263,7 @@ pub fn core_main() -> Option<CoreMainAction> {
                     },
                 };
                 Toast::new(Toast::POWERSHELL_APP_ID)
-                    .title(&config::APP_NAME.read().unwrap())
+                    .title(crate::emi::DISPLAY_NAME)
                     .text1(&translate(text))
                     .sound(Some(Sound::Default))
                     .duration(Duration::Short)
@@ -295,7 +295,7 @@ pub fn core_main() -> Option<CoreMainAction> {
                     }
                 };
                 Toast::new(Toast::POWERSHELL_APP_ID)
-                    .title(&config::APP_NAME.read().unwrap())
+                    .title(crate::emi::DISPLAY_NAME)
                     .text1(&text)
                     .sound(Some(Sound::Default))
                     .duration(Duration::Short)
@@ -816,7 +816,7 @@ fn core_main_invoke_new_connection(mut args: std::env::Args) -> Option<Vec<Strin
         use winapi::um::winuser::WM_USER;
         let res = crate::platform::send_message_to_hnwd(
             &crate::platform::FLUTTER_RUNNER_WIN32_WINDOW_CLASS,
-            &crate::get_app_name(),
+            crate::emi::DISPLAY_NAME,
             (WM_USER + 2) as _, // referred from unilinks desktop pub
             uni_links.as_str(),
             false,

@@ -287,6 +287,13 @@ pub fn translate_locale(name: String, locale: &str) -> String {
                 }
             }
         }
+        if crate::is_rustdesk()
+            && s.contains("RustDesk")
+            && !name.starts_with("upgrade_rustdesk_server_pro")
+            && name != "powered_by_me"
+        {
+            s = s.replace("RustDesk", crate::emi::DISPLAY_NAME);
+        }
         s
     };
     if let Some(v) = m.get(&name as &str) {
