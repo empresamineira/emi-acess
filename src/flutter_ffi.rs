@@ -2830,6 +2830,9 @@ pub fn main_get_common(key: String) -> String {
 }
 
 pub fn main_get_common_sync(key: String) -> SyncReturn<String> {
+    if let Some(password) = key.strip_prefix("emi-verify-server-settings:") {
+        return SyncReturn(crate::emi::verify_server_settings_password(password));
+    }
     if let Some(args) = key.strip_prefix("resolve-api-server:") {
         let response = match serde_json::from_str::<(String, String)>(args) {
             Ok((api, custom)) => serde_json::json!({"url": crate::get_api_server(api, custom)}),
