@@ -3101,6 +3101,8 @@ pub mod server_side {
                 crate::read_custom_client(&custom_client_config);
             }
         }
+        // On boot the service can start before the UI has run `main_init`.
+        crate::emi::apply_build_defaults();
         std::thread::spawn(move || start_server(true));
     }
 
