@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_hbb/common/widgets/setting_widgets.dart';
 import 'package:flutter_hbb/desktop/pages/desktop_setting_page.dart';
+import 'package:flutter_hbb/desktop/widgets/emi_server_gate.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -771,10 +772,12 @@ class _SettingsState extends State<SettingsPage> with WidgetsBindingObserver {
                 title: Text(translate('ID/Relay Server')),
                 leading: Icon(Icons.cloud),
                 onPressed: (context) {
-                  showServerSettings(gFFI.dialogManager, (callback) async {
-                    _isUsingPublicServer = await bind.mainIsUsingPublicServer();
-                    setState(callback);
-                  });
+                  showEmiServerGate(() => showServerSettings(gFFI.dialogManager,
+                          (callback) async {
+                        _isUsingPublicServer =
+                            await bind.mainIsUsingPublicServer();
+                        setState(callback);
+                      }));
                 }),
           if (!_hideNetwork && !_hideProxy)
             SettingsTile(
@@ -1233,14 +1236,13 @@ class ScanButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: Icon(Icons.qr_code_scanner),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => ScanPage(),
-          ),
-        );
-      },
+      // A scanned QR code replaces the server settings.
+      onPressed: () => showEmiServerGate(() => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => ScanPage(),
+            ),
+          )),
     );
   }
 }
