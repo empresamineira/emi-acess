@@ -4,7 +4,7 @@ Cliente de acesso remoto da **Empresa Mineira de Informática**.
 
 ## Download
 
-Baixe a versão para o seu sistema em **[Releases](https://github.com/empresamineira/rustdesk/releases/latest)**.
+Baixe a versão para o seu sistema em **[Releases](https://github.com/empresamineira/emi-acess/releases/latest)**.
 
 Suporte: suporte@empresamineira.com.br
 

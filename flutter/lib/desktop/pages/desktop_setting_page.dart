@@ -2635,7 +2635,7 @@ class _AboutState extends State<_About> {
                   ).marginSymmetric(vertical: 4.0)),
               InkWell(
                   onTap: () {
-                    launchUrlString('https://github.com/empresamineira/rustdesk');
+                    launchUrlString('https://github.com/empresamineira/emi-acess');
                   },
                   child: Text(
                     'Baseado no RustDesk (AGPL-3.0). Código-fonte',

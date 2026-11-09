@@ -2,7 +2,7 @@
 
 Cliente de acesso remoto da Empresa Mineira de Informática, derivado do RustDesk 1.5.1 (AGPL-3.0). Este arquivo explica o que foi alterado, como gerar os instaladores de Windows, Linux, macOS, Android e iOS, como trocar servidor, chave e senha, e como atualizar a partir do upstream.
 
-- **Fork:** `empresamineira/rustdesk`, branch `emi-custom`
+- **Fork:** `empresamineira/emi-acess`, branch `emi-custom`
 - **Upstream:** `rustdesk/rustdesk`, remote `upstream`
 - **Licença:** AGPL-3.0 (`LICENCE`). O copyright original e os créditos foram mantidos. A tela Sobre aponta para o código-fonte deste fork, que precisa continuar disponível para quem usa o cliente.
 
