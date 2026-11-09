@@ -367,8 +367,8 @@ jobs:
           ./build-apprun.sh ${{ matrix.job.arch }}
           sudo appimage-builder --skip-tests --recipe ./AppImageBuilder-${{ matrix.job.arch }}.yml
           cmp AppDir/AppRun appimage-build/AppRun/v2.0.0/AppRun-Release-${{ matrix.job.arch }}
-          # appimage-builder names the file after app_info.name, which has a space.
-          mv ./*.AppImage "EMI-Acess-${{ env.VERSION }}-${{ matrix.job.arch }}.AppImage"
+          # appimage-builder names the file after app_info.name, which has a space, and runs as root.
+          sudo mv ./*.AppImage "EMI-Acess-${{ env.VERSION }}-${{ matrix.job.arch }}.AppImage"
 
       - name: Upload AppImage
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
